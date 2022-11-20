@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "texttools"
+version = "0.1.0"
+description = "Modelo para empaquetar un modelo de generacion de texto"
+authors = ["abldvd <abldvd.aresag@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+scikit-learn = "^1.1.3"
+pandas = "^1.5.1"
+numpy = "^1.23.4"
+transformers = "^4.24.0"
+datasets = "^2.6.1"
+pdfplumber = "^0.7.5"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.0"
+Sphinx = "^5.3.0"
+black = "^22.10.0"
+pylint = "^2.15.5"
+ipykernel = "^6.17.0"
+poethepoet = "^0.16.4"
+
+[tool.poe.tasks]
+## Run with the commands to install
+## See https://github.com/python-poetry/poetry/issues/2543
+install-torchcuda = "pip install torch==1.13.0+cu116 -f https://download.pytorch.org/whl/torch_stable.html"
+install-torchcpu = "pip install torch==1.9.1+cpu -f https://download.pytorch.org/whl/torch_stable.html"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
