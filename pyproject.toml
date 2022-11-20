@@ -27,7 +27,7 @@ poethepoet = "^0.16.4"
 ## Run with the commands to install
 ## See https://github.com/python-poetry/poetry/issues/2543
 install-torchcuda = "pip install torch==1.13.0+cu116 -f https://download.pytorch.org/whl/torch_stable.html"
-install-torchcpu = "pip install torch==1.9.1+cpu -f https://download.pytorch.org/whl/torch_stable.html"
+install-torchcpu = "pip install torch==1.9.0+cpu -f https://download.pytorch.org/whl/torch_stable.html"
 
 [build-system]
 requires = ["poetry-core"]
