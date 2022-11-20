@@ -1,5 +1,4 @@
 """ Modulo para cargar los modelos """
-import pickle
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 from torch.cuda import is_available as cuda_available
 
@@ -11,21 +10,15 @@ def download_base(model="DeepESP/gpt2-spanish", save=False):
     model = AutoModelForCausalLM.from_pretrained(model)
 
     if save:
-        with(open("./texttools/model/model.pkl", "wb")) as file:
-            pickle.dump(model, file)
-        with(open("./texttools/model/tokenizer.pkl", "wb")) as file:
-            pickle.dump(tokenizer, file)
-
+        model.save_pretrained("./texttools/model/")
+        tokenizer.save_pretrained("./texttools/model/")
     return model, tokenizer
 
 def load_model_and_tokenizer():
     """ Funcion para cargar los modelos guardados """
 
-    with(open("./texttools/model/model.pkl", "rb")) as file:
-        model = pickle.load(file)
-    with(open("./texttools/model/tokenizer.pkl", "rb")) as file:
-        tokenizer = pickle.load(file)
-
+    model = AutoModelForCausalLM.from_pretrained("./texttools/model/")
+    tokenizer = AutoTokenizer.from_pretrained("./texttools/model/")
     return model, tokenizer
 
 def load_pipeline():
